@@ -17,7 +17,7 @@ function Navbar2() {
                 <Nav className="me-auto">
                     <Nav.Link href="#home"><Button label={'Inicio'} background={'rgb(206, 66, 46)'} action={() => console.log('Se muestra la página index')}/></Nav.Link>
                     <Nav.Link href="#link"><Button label={'Componentes'} background={'rgb(206, 66, 46)'} action={() => console.log('Se muestran los componentes')}/></Nav.Link>
-                    <NavDropdown title="Equipos" id="basic-nav-dropdown">
+                    <NavDropdown title="Equipos" id="basic-nav-dropdown" onClick={() => console.log('Se muestran los equipos disponibles')}>
                         <NavDropdown.Item href="#action/3.1">Notebook</NavDropdown.Item>
                         <NavDropdown.Item href="#action/3.2">PS5/XBOX</NavDropdown.Item>
                         <NavDropdown.Item href="#action/3.3">PC</NavDropdown.Item>

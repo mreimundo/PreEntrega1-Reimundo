@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import Button from '../Button/Button'
 import CartWidget from '../CartWidget/CartWidget'
-import './Navbar.css'
+import './NavBar.css'
 
 
 function Navbar2() {

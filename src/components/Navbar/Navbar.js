@@ -7,7 +7,7 @@ import CartWidget from '../CartWidget/CartWidget'
 import './NavBar.css'
 
 
-function Navbar2() {
+function NavBar() {
     return (
         <Navbar bg="light" expand="lg">
             <Container>
@@ -30,4 +30,4 @@ function Navbar2() {
     );
 }
 
-export default Navbar2;
+export default NavBar;

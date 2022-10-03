@@ -1,16 +1,22 @@
 import './App.css';
 import NavBar from './components/NavBar/NavBar'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
-import ItemCount from './components/ItemCount/ItemCount';
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
+
 function App() {
-  const handleOnAdd = () => {
-    return console.log("Agregado!")
-  }
+
   return (
     <div className="App">
-      <NavBar/>
-      <ItemListContainer greeting="Estos son nuestros productos"/>
-      <ItemCount stock={10} onAdd={handleOnAdd}/>
+      <BrowserRouter>
+        <NavBar/>
+        <Routes>
+          <Route path='/' element={<ItemListContainer greeting="Estos son nuestros productos"/>}/>
+          <Route path='/category/:categoryId' element={<ItemListContainer greeting="Estos son nuestros productos"/>}/>
+          <Route path='/detail/:itemId' element={<ItemDetailContainer/>}/>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

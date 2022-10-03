@@ -5,3 +5,19 @@
     border-radius: 4px;
     background-color: rgb(206, 66, 46);
 }
+
+.me-auto{
+    width: 30%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.Nav {
+    background-color: rgb(202, 200, 199);
+}
+
+#brand {
+    font-size: 2em;
+    font-weight: bold;
+    font-style: italic;
+}

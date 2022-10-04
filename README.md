@@ -73,4 +73,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ### Gifs de navegabilidad
 
 Navegación entre pestañas: https://gifyu.com/image/S3Oz9
+
 Navegación para ver detalle: https://gifyu.com/image/S3OzE

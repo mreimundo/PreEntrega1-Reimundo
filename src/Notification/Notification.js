@@ -1,0 +1,36 @@
+import './Notification.css'
+import { createContext, useState } from 'react'
+
+const Notification = ({msg, severity}) => {
+
+    if (msg === '') return
+
+    return (
+        <div className={severity === 'success' ? 'notificationSuccess' : 'notificationError'}>
+            {msg}
+        </div>
+    )
+}
+
+export const NotificationContext = createContext()
+
+export const NotificationProvider = ({children}) => {
+    const [message, setMessage] = useState('')
+    const [severity, setSeverity] = useState('success')
+
+    const setNotification = (msg, severity) => {
+        setMessage(msg)
+        setSeverity(severity)
+        setTimeout(() => {
+            setMessage('')
+        }, 2500)
+    }
+
+    return (
+        <NotificationContext.Provider value={{ setNotification }}>
+            <Notification msg={message} severity={severity}></Notification>
+            {children}
+        </NotificationContext.Provider>
+    )
+}
+

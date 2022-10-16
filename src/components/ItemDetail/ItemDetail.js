@@ -5,28 +5,31 @@ import withReactContent from 'sweetalert2-react-content'
 import { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { CartContext } from '../../context/CartContext'
+import { NotificationContext } from '../../Notification/Notification'
 
 const ItemDetail = ({id, title, pictureUrl, description, price, stock}) => {
     const MySwal = withReactContent(Swal)
     const [quantityToAdd, setQuantityToAdd] = useState(0)
     const { addItem } = useContext(CartContext)
+    const { setNotification } = useContext(NotificationContext)
 
 
     const handleOnAdd = (quantity) => {
-        MySwal.fire({
+        /*MySwal.fire({
             icon: 'success',
             title: 'Producto agregado al carrito',
             text: 'Gracias por confiar en GG',
             confirmButtonColor: 'rgb(206, 66, 46)',
             confirmButtonText: '¡Excelente!'
-        })
+        })*/
         setQuantityToAdd(quantity)
 
         const productToAdd = {
             id, title, price, quantity
         }
 
-        addItem(productToAdd)
+        addItem(productToAdd) ? setNotification(`Se agregó correctamente ${quantity} ${title} al carrito`, 'success') : setNotification(`Ya se agregó ${title} al carrito`, 'error')
+
     }
     
     const handleOnAddError = () => {

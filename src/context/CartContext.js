@@ -1,23 +1,25 @@
 import { useState, createContext } from "react"
-import Swal from 'sweetalert2'
-import withReactContent from "sweetalert2-react-content"
+//import Swal from 'sweetalert2'
+//import withReactContent from "sweetalert2-react-content"
 
 export const CartContext = createContext()
 
 export const CartContextProvider = ({ children }) => {
     const [cart, setCart] = useState([])
-    const MySwal = withReactContent(Swal)
+    //const MySwal = withReactContent(Swal)
 
     const addItem = (itemToAdd) => {
         if(!isInCart(itemToAdd.id)) {
             setCart([...cart, itemToAdd])
+            return true
         } else {
-            MySwal.fire({
+            /*MySwal.fire({
                 title: 'El producto ya esta agregado',
                 icon: 'error',
                 confirmButtonColor: 'rgb(206, 66, 46)'
             }
-            )
+            )*/
+            return false
         }
     }
     

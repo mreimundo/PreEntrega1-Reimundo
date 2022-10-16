@@ -13,7 +13,7 @@ const ItemCount = ({stock, onAdd, onAddError}) => {
     }
 
     const decrement = () => {
-        count > 0 && setCount(count-1)
+        count > 1 && setCount(count-1)
     }
 
     return(
@@ -21,7 +21,7 @@ const ItemCount = ({stock, onAdd, onAddError}) => {
             <input type="image" src={plus} alt="plus" onClick={incrementar}></input>
             <h3>{count}</h3>
             <input type="image" src={minus} alt="minus" onClick={decrement}></input>
-            <Button label={"Agregar al carrito"} background={'rgb(206, 66, 46)'} action={(count > 0 && count <= stock) ? onAdd : onAddError}/>
+            <Button label={"Agregar al carrito"} background={'rgb(206, 66, 46)'} action={() => (count > 0 && count <= stock) ? onAdd(count) : onAddError()}/>
         </div>
     )
 }

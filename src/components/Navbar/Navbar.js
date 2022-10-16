@@ -5,14 +5,14 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 import Button from '../Button/Button'
 import CartWidget from '../CartWidget/CartWidget'
 import { Link } from 'react-router-dom'
-import './NavBar.css'
+import './Navbar.css'
 
 
-function NavBar() {
+const NavBar = () => {
     return (
         <Navbar className='Nav' expand="lg">
             <Container>
-                <Navbar.Brand id='brand'>Gaming Gear</Navbar.Brand>
+            <Link to='/' id="brandLink"><Navbar.Brand id='brand'>Gaming Gear</Navbar.Brand></Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">

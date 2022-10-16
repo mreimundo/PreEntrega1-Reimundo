@@ -1,32 +1,34 @@
 import { useEffect, useState } from 'react'
-import { getItem } from '../../data/asyncMock'
 import { useParams } from 'react-router-dom'
 import ItemDetail from '../ItemDetail/ItemDetail'
-
+import { getDoc, doc } from 'firebase/firestore'
+import { db } from '../../services/firebase'
 
 const ItemDetailContainer = () => {
     const [item, setItem] = useState({})
     const [loading, setLoading] = useState(true)
     const { itemId } = useParams()
 
-
     useEffect(() => {
-        getItem(itemId).then(item => {
-            setItem(item)
+
+        const docRef = doc(db, 'items', itemId)
+
+        getDoc(docRef).then(doc => {
+            const data = doc.data()
+            const itemAdapted = { id: doc.id, ...data }
+            setItem(itemAdapted)
         }).finally(() => {
             setLoading(false)
         })
     }, [itemId])
 
 
-    console.log(item)
-
     if(loading){
         return <h2>Aguarde mientras carga su producto...</h2>
     }
     return (
         <div>
-            <ItemDetail item={item}/>
+            <ItemDetail {...item}/>
         </div>
     )
 

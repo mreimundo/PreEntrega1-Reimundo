@@ -7,7 +7,7 @@ const Notification = ({msg, severity}) => {
 
     return (
         <div className={severity === 'success' ? 'notificationSuccess' : 'notificationError'}>
-            {msg}
+            <h4>{msg}</h4>
         </div>
     )
 }

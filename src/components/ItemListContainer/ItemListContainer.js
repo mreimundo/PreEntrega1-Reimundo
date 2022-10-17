@@ -44,7 +44,7 @@ const ItemListContainer = ({greeting}) => {
         return <h2>Aguarde mientras cargan los productos...</h2>
     }
     return (
-        <div onClick={()=>console.log('hice click en itemlist cont')}>
+        <div>
             <h1>{greeting}</h1>
             <ItemList items={items}/>
         </div>

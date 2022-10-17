@@ -4,8 +4,7 @@ import {useState} from 'react'
 import Button from '../Button/Button'
 import './ItemCount.css'
 
-const ItemCount = ({stock, onAdd, onAddError}) => {
-    const init = 1
+const ItemCount = ({stock=0, init=1, onAdd, onAddError}) => {
     const [count, setCount] = useState(init)
 
     const incrementar = () => {

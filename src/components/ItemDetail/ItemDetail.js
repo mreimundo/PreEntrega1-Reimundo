@@ -10,7 +10,7 @@ import { NotificationContext } from '../../Notification/Notification'
 const ItemDetail = ({id, title, pictureUrl, description, price, stock}) => {
     const MySwal = withReactContent(Swal)
     const [quantityToAdd, setQuantityToAdd] = useState(0)
-    const { addItem } = useContext(CartContext)
+    const { addItem, getItemQuantity } = useContext(CartContext)
     const { setNotification } = useContext(NotificationContext)
 
 
@@ -24,12 +24,12 @@ const ItemDetail = ({id, title, pictureUrl, description, price, stock}) => {
         })*/
         setQuantityToAdd(quantity)
 
-        const productToAdd = {
+        const itemToAdd = {
             id, title, price, quantity
         }
 
-        addItem(productToAdd) ? setNotification(`Se agregó correctamente ${quantity} ${title} al carrito`, 'success') : setNotification(`Ya se agregó ${title} al carrito`, 'error')
-
+        addItem(itemToAdd)
+        setNotification(`Se agregó correctamente ${quantity} ${title} al carrito`, 'success')
     }
     
     const handleOnAddError = () => {
@@ -42,6 +42,8 @@ const ItemDetail = ({id, title, pictureUrl, description, price, stock}) => {
         })
     }
 
+    const itemAddedQuantity = getItemQuantity(id)
+
     return(
         <div className='itemCardDetailed'>
             <h1>Detalle del producto</h1>
@@ -49,7 +51,7 @@ const ItemDetail = ({id, title, pictureUrl, description, price, stock}) => {
             <img src={pictureUrl} alt={title}/>
             <p>{description}</p>
             <h2>{price}</h2>
-            {quantityToAdd === 0 ? (<ItemCount stock={stock} onAdd={handleOnAdd} onAddError={handleOnAddError}/>) : (<Link to='/cart'>Finalizar compra</Link>)}
+            {quantityToAdd === 0 ? (<ItemCount stock={stock} init={itemAddedQuantity} onAdd={handleOnAdd} onAddError={handleOnAddError}/>) : (<Link to='/cart'>Finalizar compra</Link>)}
             
         </div>
     )

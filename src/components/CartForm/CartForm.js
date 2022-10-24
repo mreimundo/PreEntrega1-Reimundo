@@ -29,7 +29,7 @@ const CartForm = ({order}) => {
                 <label className="formLabel" htmlFor="lastName">Apellido</label>
                 <Field className="formField" id="lastName" name="lastName" placeholder="Reimundo" />
                 <label className="formLabel" htmlFor="phone">Teléfono/Celular</label>
-                <Field className="formField" id="phone" name="phone" placeholder="123456789" />
+                <Field className="formField" id="phone" name="phone" placeholder="123456789"/>
                 <label className="formLabel" htmlFor="email">Email</label>
                 <Field
                 className="formField" 

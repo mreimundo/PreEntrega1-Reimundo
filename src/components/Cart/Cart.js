@@ -1,17 +1,24 @@
 import './Cart.css'
 import CartItem from '../CartItem/CartItem'
 import Button from '../Button/Button'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { CartContext } from '../../context/CartContext'
 import { Link } from 'react-router-dom'
 
 
 const Cart = () => {
     const { cart, total, totalQuantity, clearCart} = useContext(CartContext)
+    useEffect(() => {
+        document.title = 'Carrito | Gaming Gear'
+    })
 
     if(totalQuantity === 0){
-        return (<h1 className='cartTitle'>El carrito está vacío</h1>)
+        return (<>
+            <h1 className='cartTitle'>El carrito está vacío</h1>
+            <Link to='/'><Button label={'Ver catálogo'} background={'rgb(206, 66, 46)'}></Button></Link>
+        </>)
     }
+
 
     return (
         <div>

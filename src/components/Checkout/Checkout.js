@@ -1,11 +1,11 @@
-import { useState, useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { CartContext } from "../../context/CartContext"
-import { getDocs, addDoc, collection, where, query, documentId, writeBatch } from 'firebase/firestore'
-import { db } from '../../services/firebase'
+
 import CartForm from '../CartForm/CartForm'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import './Checkout.css'
+import { createOrderInDb } from '../../services/firebase/firestore'
 
 
 const Checkout = () => {
@@ -13,61 +13,34 @@ const Checkout = () => {
     const { cart, total, clearCart } = useContext(CartContext)
     const MySwal = withReactContent(Swal)
 
+    useEffect (() => {
+        document.title = 'Checkout | Gaming Gear'
+    })
+
     const createOrder = async (buyer) => {
-        setLoading(true)
-
-        try {
-            const objOrder = {
-                buyer,
-                items: cart,
-                total
-            }
-        
-        const ids = cart.map(item => item.id)
-        const itemsRef = collection(db, 'items')
-
-        const itemsDb = await getDocs(query(itemsRef, where(documentId(), 'in', ids)))
-        const { docs } = itemsDb
-
-        const batch = writeBatch(db)
-        const itemsWithoutStock = []
-
-        docs.forEach(doc => {
-            const dataDoc = doc.data()
-            const stockDb = dataDoc.stock
-            const itemInCart = cart.find(item => item.id === doc.id)
-            const itemQuantity = itemInCart?.quantity
-
-            stockDb >= itemQuantity ? batch.update(doc.ref, { stock: stockDb - itemQuantity}) : itemsWithoutStock.push({id: doc.id, ...dataDoc})
-        })
-
-        if(itemsWithoutStock.length === 0) {
-            await batch.commit()
-            const orderRef = collection(db, 'orders')
-            const orderAdded = await addDoc(orderRef, objOrder)
+            createOrderInDb(cart, total, buyer).then((order) => {
+            setLoading(true)
             MySwal.fire({
                 title: '¡Gracias por confiar en GG!',
                 icon: 'success',
-                text:`El ID de su orden es ${orderAdded.id}`,
+                text:`El ID de su orden es ${order.id}`,
                 confirmButtonColor: 'rgb(120, 189, 54)',
                 confirmButtonText: 'Perfecto'
             })
             clearCart()
-        }else{
+        }).catch(err => {
+            console.log(err);
             MySwal.fire({
                 title: 'No se pudo concretar la compra',
                 icon: 'error',
                 text:'Hay productos que no se encuentran con stock en estos momentos',
                 confirmButtonColor: 'rgb(206, 66, 46)'
             })
-        }
-        } catch(error) {
-            console.log(error);
-        } finally {
+        }).finally(() => {
             setLoading(false)
-        }
+        }) 
+        
     }
-
     if(loading) {
         return <h1>Su orden se está generando...</h1>
     }

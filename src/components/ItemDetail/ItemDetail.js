@@ -1,6 +1,6 @@
 import './ItemDetail.css'
 import ItemCount from '../ItemCount/ItemCount'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import  Button  from '../Button/Button'
 import { Link } from 'react-router-dom'
 import { CartContext } from '../../context/CartContext'
@@ -11,6 +11,9 @@ const ItemDetail = ({id, title, pictureUrl, description, price, stock}) => {
     const { addItem, getItemQuantity } = useContext(CartContext)
     const { setNotification } = useContext(NotificationContext)
 
+    useEffect (() => {
+        document.title = `${title} | Gaming Gear`
+    })
 
     const handleOnAdd = (quantity) => {
         setQuantityToAdd(quantity)

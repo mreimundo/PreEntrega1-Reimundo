@@ -2,8 +2,7 @@ import './ItemListContainer.css'
 import { useState, useEffect } from 'react'
 import ItemList from '../ItemList/ItemList'
 import { useParams } from 'react-router-dom'
-import { getDocs, collection, query, where } from 'firebase/firestore'
-import { db } from '../../services/firebase'
+import { getItems } from '../../services/firebase/firestore'
 
 const ItemListContainer = ({greeting}) => {
     const [items, setItems] = useState([])
@@ -12,28 +11,23 @@ const ItemListContainer = ({greeting}) => {
 
     useEffect(() => {
         setLoading(true)
-
-        const collectionRef = categoryId ? query(collection(db, 'items'), where('category', '==', categoryId)) : collection(db, 'items')
-
-        getDocs(collectionRef).then(response => {
-            const itemsAdapted = response.docs.map(doc => {
-                const data = doc.data()
-                return { id:doc.id, ...data}
-            })
-
-        setItems(itemsAdapted)
+        getItems(categoryId).then(items => {
+            setItems(items)
+        }).catch(err => {
+            console.log(err)
         }).finally(() => {
             setLoading(false)
         })
-
-        getDocs(collectionRef)
-
     }, [categoryId])
 
-
+    useEffect(() => {
+        document.title = `${categoryId || 'Inicio'} | Gaming Gear`
+    })
+    
     if(loading){
         return <h2 className='listContainerTitle'>Aguarde mientras cargan los productos...</h2>
     }
+
     return (
         <div>
             <h1 className='listContainerTitle'>{greeting}</h1>

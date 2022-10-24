@@ -1,4 +1,4 @@
-//import { getItems } from '../../data/asyncMock'
+import './ItemListContainer.css'
 import { useState, useEffect } from 'react'
 import ItemList from '../ItemList/ItemList'
 import { useParams } from 'react-router-dom'
@@ -27,25 +27,16 @@ const ItemListContainer = ({greeting}) => {
         })
 
         getDocs(collectionRef)
-        //getItems(categoryId).then(resolve => {
-            //setItems(resolve)
-        //}).finally(() => {
-            //setLoading(false)
-        //})
+
     }, [categoryId])
 
-    //useEffect(() =>{
-        //const onResize = () =>console.log('cambie de tamaño')
-        //window.addEventListener('resize', ()=>onResize())
-        //return () => window.removeEventListener('resize', onResize)
-    //}, [])
 
     if(loading){
-        return <h2>Aguarde mientras cargan los productos...</h2>
+        return <h2 className='listContainerTitle'>Aguarde mientras cargan los productos...</h2>
     }
     return (
         <div>
-            <h1>{greeting}</h1>
+            <h1 className='listContainerTitle'>{greeting}</h1>
             <ItemList items={items}/>
         </div>
     )

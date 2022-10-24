@@ -1,31 +1,22 @@
 import './ItemDetail.css'
 import ItemCount from '../ItemCount/ItemCount'
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
 import { useState, useContext } from 'react'
+import  Button  from '../Button/Button'
 import { Link } from 'react-router-dom'
 import { CartContext } from '../../context/CartContext'
 import { NotificationContext } from '../../Notification/Notification'
 
 const ItemDetail = ({id, title, pictureUrl, description, price, stock}) => {
-    const MySwal = withReactContent(Swal)
     const [quantityToAdd, setQuantityToAdd] = useState(0)
     const { addItem, getItemQuantity } = useContext(CartContext)
     const { setNotification } = useContext(NotificationContext)
 
 
     const handleOnAdd = (quantity) => {
-        /*MySwal.fire({
-            icon: 'success',
-            title: 'Producto agregado al carrito',
-            text: 'Gracias por confiar en GG',
-            confirmButtonColor: 'rgb(206, 66, 46)',
-            confirmButtonText: '¡Excelente!'
-        })*/
         setQuantityToAdd(quantity)
 
         const itemToAdd = {
-            id, title, price, quantity
+            id, title, pictureUrl, price, quantity
         }
 
         addItem(itemToAdd)
@@ -33,13 +24,7 @@ const ItemDetail = ({id, title, pictureUrl, description, price, stock}) => {
     }
     
     const handleOnAddError = () => {
-        MySwal.fire({
-            icon: 'error',
-            title: 'No se pudo agregar al carrito',
-            text: 'Verifique que la cantidad es válida',
-            confirmButtonColor: 'rgb(206, 66, 46)',
-            confirmButtonText: 'Voy a validar...'
-        })
+        setNotification(`No se pudo agregar ${title} al carrito`, 'error')
     }
 
     const itemAddedQuantity = getItemQuantity(id)
@@ -51,8 +36,7 @@ const ItemDetail = ({id, title, pictureUrl, description, price, stock}) => {
             <img src={pictureUrl} alt={title}/>
             <p>{description}</p>
             <h2>{price}</h2>
-            {quantityToAdd === 0 ? (<ItemCount stock={stock} init={itemAddedQuantity} onAdd={handleOnAdd} onAddError={handleOnAddError}/>) : (<Link to='/cart'>Finalizar compra</Link>)}
-            
+            {quantityToAdd === 0 ? (<ItemCount stock={stock} init={itemAddedQuantity} onAdd={handleOnAdd} onAddError={handleOnAddError}/>) : (<Link  to='/cart'><Button id="detailToCart" label={"Ir al carrito"} background={"rgb(120, 189, 54)"}></Button></Link>)}
         </div>
     )
     

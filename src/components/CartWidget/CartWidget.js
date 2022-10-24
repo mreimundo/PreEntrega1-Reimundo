@@ -6,12 +6,10 @@ import { CartContext } from '../../context/CartContext'
 
 const CartWidget = () => {
 
-    const { getTotalQuantity } = useContext(CartContext)
-    const totalQuantity = getTotalQuantity()
-
+    const { totalQuantity } = useContext(CartContext)
 
     return (
-        <><Link to='/cart'><img src={cart} alt='cart'/>{totalQuantity}</Link></>
+        <div className='cartContainer'><Link id="cart" to='/cart'><img src={cart} alt='cart'/>{totalQuantity}</Link></div>
     )
 }
 

@@ -1,10 +1,12 @@
-import { useState, createContext } from "react"
+import { useState, useEffect, createContext } from "react"
 
 
 export const CartContext = createContext()
 
 export const CartContextProvider = ({ children }) => {
     const [cart, setCart] = useState([])
+    const [total, setTotal] = useState(0)
+    const [totalQuantity, setTotalQuantity] = useState(0)
 
     const addItem = (itemToAdd) => {
         if(!isInCart(itemToAdd.id)) {
@@ -13,8 +15,8 @@ export const CartContextProvider = ({ children }) => {
             const cartUpdated = cart.map(item => {
                 if(item.id === itemToAdd.id) {
                     const itemUpdated = {
-                    ...item,
-                    quantity: itemToAdd.quantity
+                        ...item,
+                        quantity: itemToAdd.quantity
                     }
 
                     return itemUpdated
@@ -36,15 +38,41 @@ export const CartContextProvider = ({ children }) => {
         setCart(cartWithoutItem)
     }
 
-    const getTotalQuantity = () => {
-        let totalQuantity = 0
-
-        cart.forEach(item => {
-            totalQuantity += item.quantity
-        })
-
-        return totalQuantity
+    const clearCart = () => {
+        setCart([])
     }
+
+    useEffect(() => {
+        const getTotal = () => {
+            let sum = 0
+    
+            cart.forEach(item => {
+                sum += item.quantity * item.price
+            })
+    
+            return sum
+        }
+
+        const total = getTotal()
+
+        setTotal(total)
+    }, [cart])
+
+    useEffect(() => {
+        const getTotalQuantity = () => {
+            let totalQuantity = 0
+    
+            cart.forEach(item => {
+                totalQuantity += item.quantity
+            })
+            
+            return totalQuantity
+        }
+
+        const totalQuantity = getTotalQuantity()
+        setTotalQuantity(totalQuantity)
+    }, [cart])
+
 
     const getItemQuantity = (id) => {
         const item = cart.find(item => item.id === id)
@@ -53,7 +81,7 @@ export const CartContextProvider = ({ children }) => {
     
 
     return (
-        <CartContext.Provider value={{ cart, addItem, removeItem, getTotalQuantity, getItemQuantity }}>
+        <CartContext.Provider value={{ cart, addItem, removeItem, clearCart, getItemQuantity, total, totalQuantity }}>
             {children}
         </CartContext.Provider>
     )

@@ -10,9 +10,16 @@ img {
     font-weight: bold;
 }
 
+
 .cartContainer {
     background-color: rgb(206, 66, 46);
     border-radius: 5px;
     border: 1px solid black;
     padding: 0.5em;
+}
+
+.cartContainer:hover {
+    border: 2px solid white !important;
+    border-radius: 4px;
+    
 }

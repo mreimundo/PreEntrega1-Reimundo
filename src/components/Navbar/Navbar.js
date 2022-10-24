@@ -5,6 +5,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 import Button from '../Button/Button'
 import CartWidget from '../CartWidget/CartWidget'
 import { Link } from 'react-router-dom'
+import brandLogo from './assets/brandGG.png'
 import './Navbar.css'
 
 
@@ -12,7 +13,7 @@ const NavBar = () => {
     return (
         <Navbar className='Nav' expand="lg">
             <Container>
-            <Link to='/' id="brandLink"><Navbar.Brand id='brand'>Gaming Gear</Navbar.Brand></Link>
+            <Link to='/' id="brandLink"><Navbar.Brand><img src={brandLogo} alt={'brand'} id='brand'/></Navbar.Brand></Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">

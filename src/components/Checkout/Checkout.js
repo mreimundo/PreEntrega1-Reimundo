@@ -5,6 +5,7 @@ import { db } from '../../services/firebase'
 import CartForm from '../CartForm/CartForm'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import './Checkout.css'
 
 
 const Checkout = () => {
@@ -73,7 +74,7 @@ const Checkout = () => {
 
     return (
         <>
-            <h1>Checkout</h1>
+            <h1 id="checkoutTitle">Ya casi estamos terminando..!</h1>
             <CartForm order={createOrder}></CartForm>
         </>
     )

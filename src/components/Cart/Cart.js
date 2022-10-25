@@ -1,13 +1,12 @@
 import './Cart.css'
 import CartItem from '../CartItem/CartItem'
 import Button from '../Button/Button'
-import { useContext, useEffect } from 'react'
-import { CartContext } from '../../context/CartContext'
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-
+import { useCart } from '../../context/CartContext'
 
 const Cart = () => {
-    const { cart, total, totalQuantity, clearCart} = useContext(CartContext)
+    const { cart, total, totalQuantity, clearCart} = useCart()
     useEffect(() => {
         document.title = 'Carrito | Gaming Gear'
     })

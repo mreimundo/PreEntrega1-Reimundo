@@ -1,15 +1,15 @@
 import './ItemDetail.css'
 import ItemCount from '../ItemCount/ItemCount'
-import { useState, useContext, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import  Button  from '../Button/Button'
 import { Link } from 'react-router-dom'
-import { CartContext } from '../../context/CartContext'
-import { NotificationContext } from '../../Notification/Notification'
+import { useCart } from '../../context/CartContext'
+import { useNotification } from '../../Notification/Notification'
 
 const ItemDetail = ({id, title, pictureUrl, description, price, stock}) => {
     const [quantityToAdd, setQuantityToAdd] = useState(0)
-    const { addItem, getItemQuantity } = useContext(CartContext)
-    const { setNotification } = useContext(NotificationContext)
+    const { addItem, getItemQuantity } = useCart()
+    const { setNotification } = useNotification()
 
     useEffect (() => {
         document.title = `${title} | Gaming Gear`

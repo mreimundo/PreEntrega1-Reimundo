@@ -1,5 +1,5 @@
-import { useState, useEffect, useContext } from 'react'
-import { CartContext } from "../../context/CartContext"
+import { useState, useEffect } from 'react'
+import { useCart } from "../../context/CartContext"
 
 import CartForm from '../CartForm/CartForm'
 import Swal from 'sweetalert2'
@@ -10,7 +10,7 @@ import { createOrderInDb } from '../../services/firebase/firestore'
 
 const Checkout = () => {
     const [loading, setLoading] = useState(false)
-    const { cart, total, clearCart } = useContext(CartContext)
+    const { cart, total, clearCart } = useCart()
     const MySwal = withReactContent(Swal)
 
     useEffect (() => {

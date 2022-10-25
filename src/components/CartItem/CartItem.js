@@ -1,10 +1,9 @@
 import './CartItem.css'
 import bin from '../CartWidget/assets/recycle-bin.png'
-import { useContext } from 'react'
-import { CartContext } from '../../context/CartContext'
+import { useCart } from '../../context/CartContext'
 
 const CartItem = ({ id, title, pictureUrl, quantity, price }) => {
-    const { removeItem } = useContext(CartContext)
+    const { removeItem } = useCart()
 
     const removeCartItem = (id) =>{
         removeItem(id)

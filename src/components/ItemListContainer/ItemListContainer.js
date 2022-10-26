@@ -3,7 +3,6 @@ import ItemList from '../ItemList/ItemList'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { getItems } from '../../services/firebase/firestore'
-//import { useAsync } from '../../hooks/useAsync'
 
 const ItemListContainer = ({greeting}) => {
     const [items, setItems] = useState([])
@@ -24,7 +23,6 @@ const ItemListContainer = ({greeting}) => {
     useEffect(() => {
         document.title = `${categoryId || 'Inicio'} | Gaming Gear`
     })
-    //const { data: items, error, loading } = useAsync(() => getItems(categoryId), [categoryId])//eslint-disable-line
     
     if(loading){
         return <h2 className='listContainerTitle'>Aguarde mientras cargan los productos...</h2>

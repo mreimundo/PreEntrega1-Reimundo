@@ -38,7 +38,7 @@ const ItemDetail = ({id, title, pictureUrl, description, price, stock}) => {
             <h2>{title}</h2>
             <img src={pictureUrl} alt={title}/>
             <p>{description}</p>
-            <h2>{price}</h2>
+            <h2>Precio: ${price}</h2>
             {quantityToAdd === 0 ? (<ItemCount stock={stock} init={itemAddedQuantity} onAdd={handleOnAdd} onAddError={handleOnAddError}/>) : (<Link  to='/cart'><Button id="detailToCart" label={"Ir al carrito"} background={"rgb(120, 189, 54)"}></Button></Link>)}
         </div>
     )

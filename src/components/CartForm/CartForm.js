@@ -3,6 +3,7 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup'
 import FormikView from "../FormikControl/FormikView";
 
+
 const CartForm = ({order}) => {
 
     const initialValues = {
@@ -21,7 +22,6 @@ const CartForm = ({order}) => {
         confirmEmail: Yup.string().email('Formato de email inválido').oneOf([Yup.ref('email'), ''], 'Los correos deben coincidir').required('(Obligatorio)')
     })
 
-
     const onSubmit = (values) => {
         const buyer = {
             firstName: values?.firstName,
@@ -30,7 +30,9 @@ const CartForm = ({order}) => {
             email: values?.email
         }
         order(buyer)
+        
     }
+
     
     return (
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
@@ -71,7 +73,7 @@ const CartForm = ({order}) => {
                         name='confirmEmail'
                         placeholder='ejemplo@gmail.com'
                     />
-                    <button id="formButton" type="submit" disabled={!formik.isValid}>Finalizar compra</button>
+                    <button id="formButton" type="submit" disabled={!formik.isValid}>Realizar compra</button>
                 </Form>
         }}
         </Formik>

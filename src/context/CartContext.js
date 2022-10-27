@@ -18,7 +18,6 @@ export const CartContextProvider = ({ children }) => {
                         ...item,
                         quantity: itemToAdd.quantity
                     }
-
                     return itemUpdated
 
                 } else {

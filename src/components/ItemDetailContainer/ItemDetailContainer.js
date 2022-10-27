@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom'
 import ItemDetail from '../ItemDetail/ItemDetail'
 import './ItemDetailContainer.css'
 import { getItemsById } from '../../services/firebase/firestore'
-//import { useAsync } from '../../hooks/useAsync'
 
 const ItemDetailContainer = () => {
     const { itemId } = useParams()
@@ -21,7 +20,6 @@ const ItemDetailContainer = () => {
         })
 
     }, [itemId])
-    //const { data: {...item}, error, loading } = useAsync(() => getItemsById(itemId), [itemId]) //eslint-disable-line
 
 
     if(loading){

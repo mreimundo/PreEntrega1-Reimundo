@@ -1,7 +1,6 @@
 import { doc, getDoc, getDocs, addDoc, collection, query, where, documentId, writeBatch } from 'firebase/firestore'
 import { db } from '.'
-//import { CartContext } from "../../context/CartContext"
-//import { useContext } from 'react'
+
 
 export const getItems = (categoryId) => {
     return new Promise ((res, rej) => {

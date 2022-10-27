@@ -8,7 +8,6 @@ const CartItem = ({ id, title, pictureUrl, quantity, price }) => {
     const removeCartItem = (id) =>{
         removeItem(id)
     }
-
     
     return (
         <div className='cartItemCard'>

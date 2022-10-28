@@ -17,6 +17,13 @@ Cree una carpeta, y copie los archivos de esta rama escribiendo
 git clone https://github.com/mreimundo/gaminggear.git
 ```
 
+Ejecute luego
+
+```sh
+cd gaminggear
+```
+
+Para ubicarse en la raiz del directorio del proyecto e instalar las dependencias a continuación
 ### `Instalación de dependencias`
 
 Primero, se debe instalar NodeJS. Esto se puede hacer siguiendo los pasos en la siguiente página
@@ -74,7 +81,15 @@ npm install --save sweetalert2 sweetalert2-react-content
 
 ## Ejecución del e-commerce
 
-El e-commerce es desplegado utilizando el comando
+Ejecute 
+
+```sh
+npm install react-scripts
+```
+
+Para instalar los comandos de ejecución
+
+Finalmente, el e-commerce es desplegado utilizando el comando
 
 ### `npm start`
 
@@ -82,4 +97,8 @@ Con el mismo, verá que el sitio se pondrá en funcionamiento en una URL localho
 
 ## Otras consideraciones
 
-Para que el proyecto tenga contenido, se utilizaron variables de entorno que son almacenadas de manera local. Para almacenar los datos de los productos y categorías se creó un proyecto en Firebase.
+Para que el proyecto tenga contenido, se utilizaron variables de entorno que son almacenadas de manera local, por lo que no se visualizarán los productos a menos de que el desarrollador le de acceso a las variables de entorno de manera privada. Para almacenar los datos de los productos y categorías se creó un proyecto en Firebase.
+
+El proyecto también se encuentra disponible para visualizar y comprobar el funcionamiento en la plataforma Vercel. Acceda a través de
+
+

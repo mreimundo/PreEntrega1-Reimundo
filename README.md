@@ -1,77 +1,85 @@
-# Getting Started with Create React App
+# Gaming Gear
+Este proyecto fue realizado mediante el framework ReactJS, con el fin de implementar los conceptos aprendidos en el curso de Coderhouse.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introducción
 
-## Available Scripts
+El sitio trata de un e-commerce en el cual el usuario podrá visualizar distintos productos relacionados a la industria del gaming y seleccionar la cantidad de los productos deseados, para luego añadirlos al carrito. Desde el mismo, puede eliminar los productos que desee, así como vaciar directamente todo el carrito, o proceder a la compra. Para esto último, se redirige a un formulario que solicita datos del cliente, y una vez todos estos sean válidos, puede concretar su compra y ver su ID de comprobante.
 
-In the project directory, you can run:
+## Inicialización del proyecto
+
+En la consola de su ordenador, puede escribir los siguientes comandos en orden secuencial para inicializar el proyecto:
+
+### `Clonar repositorio`
+
+Cree una carpeta, y copie los archivos de esta rama escribiendo
+
+```sh
+git clone https://github.com/mreimundo/gaminggear.git
+```
+
+### `Instalación de dependencias`
+
+Primero, se debe instalar NodeJS. Esto se puede hacer siguiendo los pasos en la siguiente página
+https://nodejs.org/en/download/
+
+Para validar que se instaló correctamente, puede ejecutar
+
+```sh
+node -v
+```
+
+Posteriormente, en la consola ejecute
+
+```sh
+npm install react
+```
+
+Después se deben instalar las dependencias utilizadas específicamente para este proyecto:
+
+Para implementar la navegabilidad del sitio, se utilizó react-router-dom. Se puede instalar ejecutando la siguiente línea de comando:
+
+```sh
+npm install react-router-dom
+```
+
+Para almacenar los datos se utilizó Firebase. Dicha dependencia se instala como
+
+```sh
+npm install --save firebase
+```
+
+Para el armado del formulario, se hizo uso de la librería Formik (https://formik.org/) cuya instalación se realiza mediante
+
+```sh
+npm install formik --save
+```
+
+Y la validación del formulario fue facilitada por una librería de esquema-objeto denominada Yup e instalada como
+
+```sh
+npm install -S yup
+```
+
+Mientras que algunos diseños fueron posibles gracias a Bootstrap (https://getbootstrap.com/), obtenida a través del comando
+
+```sh
+npm install bootstrap@5.2.2
+```
+
+Algunas notificaciones fueron diseñadas y desplegadas haciendo uso de SweetAlert2 (https://sweetalert2.github.io/), con la siguiente línea de comando:
+
+```sh
+npm install --save sweetalert2 sweetalert2-react-content
+```
+
+## Ejecución del e-commerce
+
+El e-commerce es desplegado utilizando el comando
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Con el mismo, verá que el sitio se pondrá en funcionamiento en una URL localhost:3000
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Otras consideraciones
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-
-### Gifs de navegabilidad
-
-Navegación entre pestañas: https://gifyu.com/image/S3Oz9
-
-Navegación para ver detalle: https://gifyu.com/image/S3OzE
+Para que el proyecto tenga contenido, se utilizaron variables de entorno que son almacenadas de manera local. Para almacenar los datos de los productos y categorías se creó un proyecto en Firebase.

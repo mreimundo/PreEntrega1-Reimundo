@@ -101,4 +101,4 @@ Para que el proyecto tenga contenido, se utilizaron variables de entorno que son
 
 El proyecto también se encuentra disponible para visualizar y comprobar el funcionamiento en la plataforma Vercel. Acceda a través de
 
-
+https://gaminggear.vercel.app/

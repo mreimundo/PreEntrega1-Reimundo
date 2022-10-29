@@ -102,3 +102,11 @@ Para que el proyecto tenga contenido, se utilizaron variables de entorno que son
 El proyecto también se encuentra disponible para visualizar y comprobar el funcionamiento en la plataforma Vercel. Acceda a través de
 
 https://gaminggear.vercel.app/
+
+Cortos que muestran la funcionalidad de:
+
+Navegabilidad: https://streamable.com/wyq1jp
+
+Carrito: https://streamable.com/93smsh
+
+Formulario y sincronización con Firebase: https://streamable.com/dpcrum
